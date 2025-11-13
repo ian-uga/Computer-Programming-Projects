@@ -1,0 +1,458 @@
+# In [23]:
+#Ian Arnold
+#Assignment 4
+In [1]:
+#8-2. Favorite Book
+def favorite_book(title):
+    print(f"One of my favorite books is {title}.")
+
+favorite_book("Harry Potter")
+One of my favorite books is Harry Potter.
+In [3]:
+#8-3. T-Shirt
+def make_shirt(size, message):
+    print(f"The shirt size is {size} and it will say '{message}'.")
+
+make_shirt("Large", "Ian")
+make_shirt(message="John", size="Medium")
+The shirt size is Large and it will say 'Ian'.
+The shirt size is Medium and it will say 'John'.
+In [4]:
+#8-4. Large Shirts
+def make_shirt(size="Large", message="I love Python"):
+    print(f"Making a {size} shirt with the message: '{message}'.")
+
+make_shirt()
+make_shirt("Medium")
+make_shirt("Small", "Ali is cool.")
+Making a Large shirt with the message: 'I love Python'.
+Making a Medium shirt with the message: 'I love Python'.
+Making a Small shirt with the message: 'Ali is cool.'.
+In [7]:
+#8-5. Cities
+def describe_city(city, country="United States"):
+    print(f"{city.title()} is in {country.title()}.")
+
+describe_city("Athens")
+describe_city("Atlanta")
+describe_city("San Jose", "Costa Rica")
+Athens is in United States.
+Atlanta is in United States.
+San Jose is in Costa Rica.
+In [9]:
+#8-7. Album
+def make_album(artist, title, tracks=None):
+    album = {"artist": artist, "title": title}
+    if tracks:
+        album["tracks"] = tracks
+    return album
+
+print(make_album("Queen", "Jazz"))
+print(make_album("Adele", "30"))
+print(make_album("Kanye West", "Graduation", 13))
+{'artist': 'Queen', 'title': 'Jazz'}
+{'artist': 'Adele', 'title': '30'}
+{'artist': 'Kanye West', 'title': 'Graduation', 'tracks': 13}
+In [11]:
+#8-8. User Albums
+def make_album(artist, title):
+    return {"artist": artist, "title": title}
+
+while True:
+    print("\nEnter album info (type 'q' to quit):")
+    artist = input("Artist: ")
+    if artist.lower() == "q":
+        break
+    title = input("Title: ")
+    if title.lower() == "q":
+        break
+
+    album = make_album(artist, title)
+    print(album)
+Enter album info (type 'q' to quit):
+{'artist': 'Lil Baby', 'title': 'Too Hard'}
+
+Enter album info (type 'q' to quit):
+In [12]:
+#8-9. Magicians
+def show_magicians(names):
+    for name in names:
+        print(name.title())
+
+magicians = ["houdini", "blaine", "angel"]
+show_magicians(magicians)
+Houdini
+Blaine
+Angel
+In [15]:
+#8-10 (1). Sending Messages
+magicians = ["houdini", "blaine", "angel"]
+sent_messages = []
+
+def show_magicians(names):
+    for n in names:
+        print(n.title())
+
+def send_messages(messages, sent_messages):
+    """Print each message (magician name) and move it to sent_messages."""
+    while messages:
+        message = messages.pop()             
+        print(f"Sending message: {message.title()}")
+        sent_messages.append(message)
+
+show_magicians(magicians[:]) 
+send_messages(magicians, sent_messages)
+Houdini
+Blaine
+Angel
+Sending message: Angel
+Sending message: Blaine
+Sending message: Houdini
+In [17]:
+#8-11. Unchanged Magicians
+def make_great(names):
+    return [f"The Great {name}." for name in names]
+
+def show_magicians(names):
+    for name in names:
+        print(name)
+
+magicians = ["houdini", "blaine", "angel"]
+great_magicians = make_great(magicians[:])
+
+show_magicians(magicians)
+show_magicians(great_magicians)
+houdini
+blaine
+angel
+The Great houdini.
+The Great blaine.
+The Great angel.
+In [18]:
+#8-12. Sandwiches
+def make_sandwich(*items):
+    print("Making a sandwich with:")
+    for item in items:
+        print(f"- {item}")
+
+make_sandwich("ham", "cheese")
+make_sandwich("turkey", "lettuce", "tomato")
+make_sandwich("bacon", "egg", "avocado", "mayo")
+Making a sandwich with:
+- ham
+- cheese
+Making a sandwich with:
+- turkey
+- lettuce
+- tomato
+Making a sandwich with:
+- bacon
+- egg
+- avocado
+- mayo
+In [19]:
+#8-14. Cars
+def make_car(manufacturer, model, **options):
+    car = {"manufacturer": manufacturer, "model": model}
+    for key, value in options.items():
+        car[key] = value
+    return car
+
+car = make_car("ford", "focus", color="white", tow_package=True)
+print(car)
+{'manufacturer': 'ford', 'model': 'focus', 'color': 'white', 'tow_package': True}
+In [27]:
+#8-16. Imports
+import imp1
+imp1.greet_user("Ian")
+
+from imp1 import greet_user
+greet_user("Ian")
+
+from imp1 import greet_user as fn
+fn("Ian")
+
+import imp1 as mn
+mn.greet_user("Ian")
+
+from imp1 import *
+greet_user("Ian")
+Hello, Ian!
+Hello, Ian!
+Hello, Ian!
+Hello, Ian!
+Hello, Ian!
+In [29]:
+#9-1. Restaurant
+class Restaurant:
+    def __init__(self, name, cuisine):
+        self.restaurant_name = name
+        self.cuisine_type = cuisine
+
+    def describe_restaurant(self):
+        print(f"{self.restaurant_name} serves {self.cuisine_type}.")
+
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is open!")
+
+restaurant = Restaurant("Popeyes", "Fast Food")
+print(restaurant.restaurant_name)
+print(restaurant.cuisine_type)
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+Popeyes
+Fast Food
+Popeyes serves Fast Food.
+Popeyes is open!
+In [30]:
+#9-2. Three Restauraunts
+restaurant1 = Restaurant("Popeyes", "Fast Food")
+restaurant2 = Restaurant("Olive Garden", "Italian")
+restaurant3 = Restaurant("Fuji", "Japanese")
+
+restaurant1.describe_restaurant()
+restaurant2.describe_restaurant()
+restaurant3.describe_restaurant()
+Popeyes serves Fast Food.
+Olive Garden serves Italian.
+Fuji serves Japanese.
+In [32]:
+#9-3. Users
+class User:
+    def __init__(self, first, last, age, city, email, username):
+        self.first_name = first
+        self.last_name = last
+        self.age = age
+        self.city = city
+        self.email = email
+        self.username = username
+
+    def describe_user(self):
+        print(f"{self.first_name} {self.last_name}, {self.age}, from {self.city}, email: {self.email}, username: {self.username}")
+
+    def greet_user(self):
+        print(f"Welcome back, {self.first_name}!")
+
+user1 = User("Ian", "Arnold", 23, "Athens", "ian@example.com", "ian22")
+user2 = User("John", "Mauro", 21, "Savannah", "john@example.com", "john21")
+user3 = User("Chris", "Kazunas", 21, "Medford", "chris@example.com", "chris21")
+
+user1.describe_user()
+user1.greet_user()
+
+user2.describe_user()
+user2.greet_user()
+
+user3.describe_user()
+user3.greet_user()
+Ian Arnold, 23, from Athens, email: ian@example.com, username: ian22
+Welcome back, Ian!
+John Mauro, 21, from Savannah, email: john@example.com, username: john21
+Welcome back, John!
+Chris Kazunas, 21, from Medford, email: chris@example.com, username: chris21
+Welcome back, Chris!
+In [1]:
+#9-4. Number Served
+class Restaurant:
+    def __init__(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+
+    def describe_restaurant(self):
+        print(f"{self.restaurant_name} serves {self.cuisine_type} cuisine.")
+
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is now open!")
+
+    def set_number_served(self, number):
+        self.number_served = number
+
+    def increment_number_served(self, additional_customers):
+        self.number_served += additional_customers
+
+
+restaurant = Restaurant("Tasty Bites", "Italian")
+print(f"Customers served: {restaurant.number_served}")
+
+restaurant.number_served = 15
+print(f"Customers served: {restaurant.number_served}")
+
+restaurant.set_number_served(30)
+print(f"Customers served: {restaurant.number_served}")
+
+restaurant.increment_number_served(25)
+print(f"Customers served: {restaurant.number_served}")
+Customers served: 0
+Customers served: 15
+Customers served: 30
+Customers served: 55
+In [2]:
+#9-5. Login Attempts
+class User:
+    def __init__(self, first_name, last_name, age, location):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.location = location
+        self.login_attempts = 0
+
+    def describe_user(self):
+        print(f"User: {self.first_name} {self.last_name}, Age: {self.age}, Location: {self.location}")
+
+    def greet_user(self):
+        print(f"Welcome back, {self.first_name}!")
+
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+
+    def reset_login_attempts(self):
+        self.login_attempts = 0
+
+
+user = User("Ian", "Arnold", 23, "Georgia")
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+print(f"Login attempts: {user.login_attempts}")
+
+user.reset_login_attempts()
+print(f"Login attempts after reset: {user.login_attempts}")
+Login attempts: 3
+Login attempts after reset: 0
+In [4]:
+#9-6. Ice Cream Stand
+class IceCreamStand(Restaurant):
+    def __init__(self, restaurant_name, cuisine_type):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = ["vanilla", "chocolate", "strawberry", "mint"]
+
+    def display_flavors(self):
+        print("Available flavors:")
+        for flavor in self.flavors:
+            print(f"- {flavor}")
+
+
+ice_cream_stand = IceCreamStand("Dairy Queen", "Dessert")
+ice_cream_stand.describe_restaurant()
+ice_cream_stand.display_flavors()
+Dairy Queen serves Dessert cuisine.
+Available flavors:
+- vanilla
+- chocolate
+- strawberry
+- mint
+In [5]:
+#9-7. Admin
+class Admin(User):
+    def __init__(self, first_name, last_name, age, location):
+        super().__init__(first_name, last_name, age, location)
+        self.privileges = ["can add post", "can delete post", "can ban user"]
+
+    def show_privileges(self):
+        print("Admin privileges:")
+        for privilege in self.privileges:
+            print(f"- {privilege}")
+
+
+admin_user = Admin("Sarah", "Jones", 30, "Arizona")
+admin_user.show_privileges()
+Admin privileges:
+- can add post
+- can delete post
+- can ban user
+In [6]:
+#9-8. Privileges
+class Privileges:
+    def __init__(self, privileges=None):
+        if privileges is None:
+            privileges = ["can add post", "can delete post", "can ban user"]
+        self.privileges = privileges
+
+    def show_privileges(self):
+        print("Privileges:")
+        for privilege in self.privileges:
+            print(f"- {privilege}")
+
+
+class Admin(User):
+    def __init__(self, first_name, last_name, age, location):
+        super().__init__(first_name, last_name, age, location)
+        self.privileges = Privileges()
+
+
+admin_user = Admin("Sarah", "Jones", 30, "Arizona")
+admin_user.privileges.show_privileges()
+Privileges:
+- can add post
+- can delete post
+- can ban user
+In [7]:
+#9-10. Imported Restaurant
+from restaurant import Restaurant
+
+my_restaurant = Restaurant("Supranos' Food", "Italian")
+my_restaurant.describe_restaurant()
+Supranos' Food serves Italian cuisine.
+In [20]:
+#9-11. Imported Admin
+from useradmin import Admin
+
+admin = Admin("Ian", "Arnold")
+admin.privileges.show_privileges()
+Privileges:
+- can add post
+- can delete post
+- can ban user
+In [21]:
+#9-14. Dice
+from random import randint
+
+class Die:
+    def __init__(self, sides=6):
+        self.sides = sides
+
+    def roll_die(self):
+        print(randint(1, self.sides))
+        
+die_6 = Die()
+for i in range(10):
+    die_6.roll_die()
+
+die_10 = Die(10)
+for i in range(10):
+    die_10.roll_die()
+
+die_20 = Die(20)
+for i in range(10):
+    die_20.roll_die()
+3
+5
+4
+5
+2
+4
+2
+6
+4
+3
+7
+9
+2
+1
+6
+3
+6
+10
+10
+1
+8
+7
+12
+3
+8
+9
+20
+18
+19
+17
